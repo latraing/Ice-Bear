@@ -15,7 +15,7 @@ import net.dv8tion.jda.api.OnlineStatus;
 /**
  * The user interface for Ice Bear. Starts up Ice Bear.
  * 
- * @author latraing
+ * @author Noss
  */
 public class IceBearUI {
 	/** Java discord app object */
