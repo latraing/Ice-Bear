@@ -11,6 +11,9 @@ public class Commands extends ListenerAdapter {
 		if (args[0].equalsIgnoreCase(sb.append("greet").toString())) {
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage("Ice Bear has ninja stars.").queue();
+		} else if (args[0].equalsIgnoreCase(sb.append("info").toString())) {
+			event.getChannel().sendTyping().queue();
+			event.getChannel().sendMessage("Noss told Ice Bear to come.").queue();
 		}
 	}
 }
