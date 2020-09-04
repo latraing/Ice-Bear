@@ -7,9 +7,12 @@ import java.util.Scanner;
 import javax.security.auth.login.LoginException;
 
 import commands.Commands;
+import events.GuildMemberJoin;
+import events.GuildMemberLeave;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.OnlineStatus;
 
 /**
@@ -31,8 +34,11 @@ public class IceBearUI {
 	 */
 	public static void main (String[] args) throws LoginException, FileNotFoundException {
 		Scanner tokenReader = new Scanner(new File("token.txt"));
-		jda = JDABuilder.createDefault(tokenReader.next()).build();
+		jda = JDABuilder.createDefault(tokenReader.next(), GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_MESSAGES).build();
 		jda.getPresence().setPresence(OnlineStatus.ONLINE, Activity.watching("We Bare Bears"));
 		jda.addEventListener(new Commands());
+		jda.addEventListener(new GuildMemberJoin());
+		jda.addEventListener(new GuildMemberLeave());
+
 	}
 }
